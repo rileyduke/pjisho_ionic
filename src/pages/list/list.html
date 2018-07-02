@@ -8,6 +8,21 @@
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-header>
+      Header
+    </ion-card-header>
+    <ion-card-content>
+      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+    </ion-card-content>
+  </ion-card>
+  <div padding>
+    <button full ion-button color="light">Light</button>
+    <button full ion-button>Default</button>
+    <button full ion-button color="secondary">Secondary</button>
+    <button full ion-button color="danger">Danger</button>
+    <button full ion-button color="dark">Dark</button>
+  </div>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon [name]="item.icon" item-start></ion-icon>

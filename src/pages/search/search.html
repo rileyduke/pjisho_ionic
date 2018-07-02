@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Search</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item inset>
+      <ion-searchbar [(ngModel)]="searchTerm" (change)="searchJisho($event,searchTerm)" autocorrect="off"></ion-searchbar>
+    </ion-item>
+
+    <div padding>
+      {{returnJSON | json}}
+    </div>
+  </ion-list>
+</ion-content>
