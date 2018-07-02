@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { GLOBALS } from '../../helper/global';
 
 import { SearchService } from './search.service';
+import { KeywordResult } from '../../models/KeywordResult';
 
 @Component({
   selector: 'page-search',
@@ -11,12 +12,14 @@ import { SearchService } from './search.service';
 })
 export class SearchPage {
   searchTerm: string;
-  returnJSON: string;
+  returnJSON: KeywordResult;
 
   constructor(public navCtrl: NavController, 
     private globals: GLOBALS,
     private searchService: SearchService) {
-
+      this.returnJSON = {
+        data: []
+      } as KeywordResult;
   }
 
   searchJisho(event, term){
