@@ -6,20 +6,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { CardCreate } from '../pages/card/card.create';
+import { DeckCreate } from '../pages/deck/deck.create';
+import { SearchPage } from '../pages/search/search';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { IonicStorageModule } from '@ionic/storage';
-import { SearchPage } from '../pages/search/search';
 import { GLOBALS } from '../helper/global';
+import { SQLite } from '@ionic-native/sqlite';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    SearchPage
+    SearchPage,
+    CardCreate,
+    DeckCreate
   ],
   imports: [
     BrowserModule,
@@ -32,14 +37,17 @@ import { GLOBALS } from '../helper/global';
     MyApp,
     HomePage,
     ListPage,
-    SearchPage
+    SearchPage,
+    CardCreate,
+    DeckCreate
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GLOBALS,
-    HttpClientModule
+    HttpClientModule,
+    SQLite
   ]
 })
 export class AppModule {}
