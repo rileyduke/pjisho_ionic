@@ -2,26 +2,23 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SearchPage } from '../pages/search/search';
 import { DeckCreate } from '../pages/deck/deck.create';
 
-import { Storage } from '@ionic/storage';
-
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class PJisho {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = SearchPage;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private sqlite: SQLite) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation

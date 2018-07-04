@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MyApp } from './app.component';
+import { PJisho } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { CardCreate } from '../pages/card/card.create';
@@ -16,10 +16,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import { GLOBALS } from '../helper/global';
 import { SQLite } from '@ionic-native/sqlite';
+import { Database } from '../database/database.component';
 
 @NgModule({
   declarations: [
-    MyApp,
+    PJisho,
     HomePage,
     ListPage,
     SearchPage,
@@ -28,18 +29,19 @@ import { SQLite } from '@ionic-native/sqlite';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(PJisho),
     IonicStorageModule.forRoot(),
     HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    PJisho,
     HomePage,
     ListPage,
     SearchPage,
     CardCreate,
-    DeckCreate
+    DeckCreate,
+    Database
   ],
   providers: [
     StatusBar,

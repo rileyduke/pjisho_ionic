@@ -31,7 +31,6 @@ export class SearchPage {
   }
 
   createCard(dataResult: DataResult){
-    alert(dataResult.is_common);
     this.navCtrl.push(CardCreate, { cardResult: dataResult });
   }
 
