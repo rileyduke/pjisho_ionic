@@ -1,10 +1,31 @@
 // the front and back of a card will store
 // a github-style markdown string which
 // will be used to display the card.
-export interface Card {
-    front: string;
-    back: string;
+export class Card {
+    constructor(){
+        this.back = [];
+        this.front = [];
+    }
 
-    front_raw: string[];
-    back_raw: string[];
+    get_front(){
+        var ret_front = '';
+        this.front.forEach(x => {
+            ret_front += x;
+        });
+        return ret_front;   
+    };
+    get_back(): String{
+        var ret_back = '';
+        this.back.forEach(x => {
+            ret_back += x; 
+        });
+        return ret_back;
+    };
+
+    front: string[];
+    back: string[];
+
+    card: Card;
+
+    // getFront: 
 }

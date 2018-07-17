@@ -10,5 +10,6 @@
 <ion-content padding>
     {{ cardResult | json }}
 
-    <button ion-button (click)="createCard()">Create</button>
+    <button ion-button full (click)="createCard()">Create</button>
+    <button ion-button full (click)="getCard()">Get</button>
 </ion-content>

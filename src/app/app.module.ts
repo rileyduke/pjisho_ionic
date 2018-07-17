@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { ErrorHandler, NgModule, Renderer } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule, LoadingController } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 
 import { PJisho } from './app.component';
@@ -16,7 +16,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import { GLOBALS } from '../helper/global';
 import { SQLite } from '@ionic-native/sqlite';
-import { Database } from '../database/database.component';
+import { Database } from '../database/database';
+import { Keyboard } from '../../node_modules/@ionic-native/keyboard';
 
 @NgModule({
   declarations: [
@@ -40,16 +41,18 @@ import { Database } from '../database/database.component';
     ListPage,
     SearchPage,
     CardCreate,
-    DeckCreate,
-    Database
+    DeckCreate
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GLOBALS,
+    Database,
     HttpClientModule,
-    SQLite
+    SQLite,
+    Keyboard,
+    LoadingController
   ]
 })
 export class AppModule {}

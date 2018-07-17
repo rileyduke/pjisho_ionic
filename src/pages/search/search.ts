@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Renderer } from '@angular/core';
+import { Keyboard } from '@ionic-native/keyboard';
+import { NavController, LoadingController } from 'ionic-angular';
 import { GLOBALS } from '../../helper/global';
 
 import { SearchService } from './search.service';
@@ -20,18 +22,36 @@ export class SearchPage {
 
   constructor(public navCtrl: NavController, 
     private globals: GLOBALS,
-    private searchService: SearchService) {
+    private searchService: SearchService,
+    private keyboard: Keyboard,
+    private renderer: Renderer,
+    private loadingController: LoadingController) {
       this.returnJSON = {
         data: []
       } as KeywordResult;
   }
 
   searchJisho(event, term){
-    this.searchService.getJishoTerm(term).subscribe(result => this.returnJSON = result);
+    let loading = this.loadingController.create({
+      content: 'Searching...'
+    });
+  
+    loading.present();
+  
+    this.renderer.invokeElementMethod(event.target, 'blur');
+    this.keyboard.close();
+    this.searchService.getJishoTerm(term).subscribe(result => {
+      loading.dismiss();
+      this.returnJSON = result;
+    });
   }
 
   createCard(dataResult: DataResult){
     this.navCtrl.push(CardCreate, { cardResult: dataResult });
+  }
+
+  closeKeyboard(){
+    this.keyboard.close();
   }
 
 }

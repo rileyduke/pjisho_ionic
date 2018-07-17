@@ -9,11 +9,11 @@
 
 <ion-content>
   <ion-list>
-    <ion-item inset>
-      <ion-searchbar [(ngModel)]="searchTerm" (change)="searchJisho($event,searchTerm)" autocorrect="off"></ion-searchbar>
+    <ion-item>
+      <ion-searchbar (keyup.enter)="closeKeyboard()" [(ngModel)]="searchTerm" (change)="searchJisho($event,searchTerm)" autocorrect="off"></ion-searchbar>
     </ion-item>
 
-    <div padding-left padding-right *ngFor="let result of returnJSON.data">
+    <div *ngFor="let result of returnJSON.data">
       <div>
         <ion-card>
           <ion-card-header>
